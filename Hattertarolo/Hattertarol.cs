@@ -11,37 +11,42 @@ namespace Hattertarolo
     internal class Hattertarol
     {
 
-        protected int maxtaroloKapacitas;
+        protected long maxtaroloKapacitas;
         protected List<Fajl> adatok = new List<Fajl>();
         public Hattertarol(int maxtaroloKapacitas)
         {
             this.MaxtaroloKapacitas = maxtaroloKapacitas;
-        }
-        public Hattertarol()
-        {
-            
+            this.adatok = adatok;
         }
 
 
-        protected int MaxtaroloKapacitas { get => maxtaroloKapacitas; set => maxtaroloKapacitas = value; }
+        protected long MaxtaroloKapacitas { get => maxtaroloKapacitas; set => maxtaroloKapacitas = value; }
 
         public override string ToString()
         {
-            return base.ToString() + $" {this.adatok}, {this.MaxtaroloKapacitas}";
+            string output = "";
+            foreach(var item in adatok)
+            {
+                output += item.ToString();
+            }
+            Console.WriteLine("niefnfug");
+            return base.ToString() + $" {output}, {this.MaxtaroloKapacitas}";
+
         }
 
-        public void Format()
+        public virtual bool Format()
         {
             this.adatok.Clear();
+            return true;
         }
 
-        public int MaxKapacitas()
+        public long MaxKapacitas()
         {
             return this.MaxtaroloKapacitas;
         }
 
 
-        public int SzabadKapacitas()
+        public virtual long SzabadKapacitas()
         {
             return MaxtaroloKapacitas - FoglaltKapacitas();
         }
@@ -56,7 +61,7 @@ namespace Hattertarolo
             return foglaltkapacitas;
         }
 
-        public bool Hozzaaad(string nev, string kiterjesztes, string tartalom)
+        public virtual bool Hozzaad(string nev, string kiterjesztes, string tartalom)
         {
            if (Keres(nev) == null && SzabadKapacitas() > tartalom.Length)
             {
@@ -78,7 +83,7 @@ namespace Hattertarolo
             return null;
         }
         
-        public bool Torol(string filenev)
+        public virtual bool Torol(string filenev)
         {
             Fajl cuc = Keres(filenev);
             adatok.Remove(cuc);

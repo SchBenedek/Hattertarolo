@@ -8,9 +8,9 @@ namespace Hattertarolo
 {
     internal class Fajl
     {
-        private string nev;
-        private string kiterj;
-        private string tartalom;
+        protected string nev;
+        protected string kiterj;
+        protected string tartalom;
 
         public Fajl(string nev, string kiterj, string tartalom)
         {

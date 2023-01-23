@@ -11,21 +11,28 @@ namespace Hattertarolo
     {
         private bool irasvedett;
 
-        public Floppy(bool irasvedett) : base()
+        public Floppy(bool irasvedett) : base(1440000)
         {
             this.irasvedett = irasvedett;
-            this.MaxtaroloKapacitas = 1440*1024;
         }
-
-        public bool Irasvedett { get => irasvedett; set => irasvedett = value; }
-
-        public new void Format()
+        public void irasVedett()
         {
-            if (irasvedett)
-            {
-                throw 
-            }
-            Format();
-        } 
+            this.irasvedett = !this.irasvedett;
+        }
+        public override bool Format()
+        {
+            if (!irasvedett) { base.Format(); return true; }
+            else { Console.WriteLine("nem sikerült a formázás"); return false; }
+        }
+        public override bool Hozzaad(string nev, string kiterjesztes, string tartalom)
+        {
+            if (!irasvedett) { base.Hozzaad(nev, kiterjesztes, tartalom); return true; }
+            else { Console.WriteLine("nem sikerult a hozzaadas"); return false; }
+        }
+        public override bool Torol(string filenev)
+        {
+            if (!irasvedett) { base.Torol(filenev); return true; }
+            else { Console.WriteLine("nem sikerult a torles"); return false; }
+        }
     }
 }

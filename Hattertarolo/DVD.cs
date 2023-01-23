@@ -11,16 +11,55 @@ namespace Hattertarolo
     {
         protected bool zarolt = false;
 
-        public DVD(int maxtaroloKapacitas):base(maxtaroloKapacitas)
+        public DVD():base(470000000)
         {
-            this.maxtaroloKapacitas = 470000;
+            this.zarolt = zarolt;
         }
 
         public void Zarolas()
         {
             this.zarolt = true;
-
         }
+        public override long SzabadKapacitas()
+        {
+            if (zarolt) { return 0; }
+            else { return base.SzabadKapacitas(); }
+           
+        }
+        public override bool Format()
+        {
+            if (!zarolt)
+            {
+                base.Format(); return true;
+            }
+            else
+            {
+                Console.WriteLine("nem sikerült a formázás"); return false; 
+            }
+        }
+        public override bool Hozzaad(string nev, string kiterjesztes, string tartalom)
+        {
+            if (!zarolt)
+            {
+                base.Hozzaad(nev, kiterjesztes, tartalom); return true; 
+            }
+            else
+            {
+                Console.WriteLine("nem sikerult a hozzaadas"); return false;
+            }
+        }
+        public override bool Torol(string filenev)
+        {
+            if (!zarolt)
+            {
+                base.Torol(filenev); return true;
+            }
+            else 
+            {
+                Console.WriteLine("nem sikerult a torles"); return false;
+            }
+        }
+        
 
 
 
