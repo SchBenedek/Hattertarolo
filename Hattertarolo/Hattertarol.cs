@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace Hattertarolo
 {
-    
+
     internal class Hattertarol
     {
-      
-        private readonly int maxtaroloKapacitas;
+
+        protected int maxtaroloKapacitas;
         protected List<Fajl> adatok = new List<Fajl>();
         public Hattertarol(int maxtaroloKapacitas)
         {
-            this.maxtaroloKapacitas = maxtaroloKapacitas;
+            this.MaxtaroloKapacitas = maxtaroloKapacitas;
+        }
+        public Hattertarol()
+        {
+            
         }
 
-        protected int TaroloKapacitas { get => maxtaroloKapacitas; }
+
+        protected int MaxtaroloKapacitas { get => maxtaroloKapacitas; set => maxtaroloKapacitas = value; }
 
         public override string ToString()
         {
-            return base.ToString() + $" {this.adatok}, {this.maxtaroloKapacitas}";
+            return base.ToString() + $" {this.adatok}, {this.MaxtaroloKapacitas}";
         }
 
         public void Format()
@@ -32,13 +37,13 @@ namespace Hattertarolo
 
         public int MaxKapacitas()
         {
-            return this.maxtaroloKapacitas;
+            return this.MaxtaroloKapacitas;
         }
 
 
         public int SzabadKapacitas()
         {
-            return maxtaroloKapacitas - FoglaltKapacitas();
+            return MaxtaroloKapacitas - FoglaltKapacitas();
         }
 
         public int FoglaltKapacitas()

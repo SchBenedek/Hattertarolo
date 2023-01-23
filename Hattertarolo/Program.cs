@@ -18,6 +18,13 @@ namespace Hattertarolo
 
             Console.WriteLine(h1.Listaz("oop"));
 
+
+            Floppy f1 = new Floppy(true);
+            f1.Hozzaaad("fsaz", "txt", "Lorem Ipsum dolor sit amet");
+            Console.WriteLine(f1.FoglaltKapacitas());
+            Console.WriteLine(f1.Listaz("txt"));
+            f1.Format();
+            Console.WriteLine(f1.FoglaltKapacitas());
             Console.ReadLine();
         }
     }
